@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 /*sidebar active*/
 /*media query if cp mode*/
 :root{
-    --main-color: #14979a;
+    --main-color: #14adb8;
     --color-dark: #1D2231;
     --text-grey: #8390A2;
 }
@@ -20,8 +20,7 @@ html{
 }
 
 body{
-    font-family: 'Roboto Condensed', sans-serif;
-    background-color:#fafafa;
+    font-family: 'Roboto', sans-serif;
 }
 
 /*sidebar for admin*/
@@ -45,7 +44,6 @@ label i{
     color:#fff ;
     overflow-y:auto ;
     transition: width 500ms;
-    font-family: 'Roboto', sans-serif;
 }
 
 .sidebar-header{
@@ -56,7 +54,7 @@ label i{
     padding: 0rem 1rem;
 }
 
-.sidebar-header h2 span{
+.sidebar-header h3 span{
     font-size: 1.2rem;
 }
 
@@ -80,6 +78,7 @@ label i{
     font-size: 1.2rem;
     text-decoration: inherit;
 }
+
 
 .sidebar a span:last-child {
     padding-left: .6rem;
@@ -115,22 +114,23 @@ label i{
     transition: margin-left 500ms;
 }
 
- header {
+header {
     position: fixed;
     left:240px;
-    top: 0px;
-    width: 100%; 
+    top: 0;
+    z-index: 100;
+    width: 100%;
     background: #fff;
-    /*height: 60px;
+    height: 60px;
     padding: 0rem 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #ccc;
-    transition: left 500ms; */
-} 
+    transition: left 500ms;
+}
 
-/* .search-wrapper{
+.search-wrapper{
     display: flex;
     align-items: center;
 }
@@ -140,7 +140,7 @@ label i{
     outline:0;
     padding:1rem;
     height: 38px;
-} */
+}
 
 main{
     margin-top: 60px;
@@ -156,18 +156,17 @@ main{
 
 /*dashboard-cards*/
 .dashboard-cards{
+   
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-column-gap: 2rem;
+    grid-column-gap: 3rem;
 }
 
 .card-single {
-    /* background: #fff; */
+    background: #fff;
     border-radius: 7px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.5);
-    margin-top: 1rem;
-    width: 90%;
-    padding: 10px;
+    height: 90;
 }
 
 .card-body {
@@ -178,20 +177,20 @@ main{
 
 .card-body span{
     font-size: 3rem;
-    /* color: #777; */
+    color: #777;
     padding-right: 1.4rem;
 }
 
 .card-body h5{
-    /* color: var(--text-grey); */
-    font-size: 20px;
+    color: var(--text-grey);
+    font-size: .9rem;
 }
 
-/* .card-body h4{
+.card-body h4{
     color: var(--color-dark);
     font-size:2rem;
     margin-top: .2rem;
-} */
+}
 
 .card-footer {
     padding: .2rem 1rem;

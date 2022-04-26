@@ -4,62 +4,143 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Admin</title>
+        <title>Document</title>
 
         <!--Bootstrap css-->
-        <!-- {{-- <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"> --}} -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
+
         <!--font-awesome-icons-->
         <link rel="stylesheet" href="{{asset('css/all.min.css')}}">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
-        <!--Custom Css-->
-        <link rel="stylesheet" href="{{asset('css/style.css')}}">
-      
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap4.min.css">
 
-        {{-- <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script> --}}
-   
+        <!--Custom Css-->
+        <link rel="stylesheet" href="{{asset('css/app.css')}}">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.css"/>
+
+      
     </head>
 
     <body>
 
         {{--navbar --}}
-        {{-- @include('includes.admin.navbar') --}}
+        {{-- @include('includes.navbar') --}}
 
         {{-- sidebar --}}
         @include('includes.admin.sidebar')
 
         {{-- main contents --}}
-         <main class="mt-2 pt-3">
-            <div class="container-fluid">
+        <div class="main-content">
+           
+            <main>
                 @yield('content')
-            </div>
-        </main>
+            </main>
+            
+        </div>
+
+        {{-- s --}}
+
 
         <!--js bootstrap-->
+        <script src="{{asset('js/jquery-slim.min.js')}}"></script>
+        <script src="{{asset('js/popper.min.js')}}"></script>
+        <script src="{{asset('js/bootstrap.min.js')}}"></script>
+
+        <!--Custom js-->
+        {{-- <script src="{{asset('js/main.js')}}"></script> --}}
         <script src={{asset('js/jquery-3.5.1.js')}}></script>
         <script src={{asset('js/bootstrap.bundle.min.js')}}></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.js"></script>
+
+       
 
         <script>
-            $(document).on('click', '.edit', function() {
+          $(document).ready(function() {
+            var t =$('#search').DataTable( {
+             "columnDefs": [
+            {
+                "targets": [ 4 ],
+                "visible": false,
+                "searchable": true
+            },
+            {
+                "targets": [ 5],
+                "visible": false,
+                "searchable": true
+            },
+            {
+                "targets": [ 6 ],
+                "visible": false,
+                "searchable": true
+            },
+            {
+                "targets": [ 7 ],
+                "visible": false,
+                "searchable": true
+            },
+            {
+                "targets": [ 8 ],
+                "visible": false,
+                "searchable": true
+            },
+            
+            {
+                "targets": [ 9 ],
+                "visible": false
+            }
+        ]
+    } );
+
+
+                $(document).on('click', '.viewuser', function() {
                     
-                var _this= $(this).parents('tr');
-                
-                $('#prevname').val(_this.find('.prevname').text());
-                $('#bid').val(_this.find('.bid').text());
-            });
-        </script>
-
-        <script>
-            $(document).ready(function() {
-                $('#example').DataTable(
-                {
-                    select: true
+                    var _this= $(this).parents('tr');
+                    
+                    $('#Fullname').val(_this.find('.Fullname').text());
+    
+                 
+                     var currentRow = $(this).closest("tr");
+                     var contactnumber = t.row(currentRow).data()[4];
+                     var emailaddress = t.row(currentRow).data()[5];
+                     $('#Contact').val(contactnumber);
+                     $('#Email').val(emailaddress);
+                     
                 });
-            })
+
+
+                
+                $(document).on('click', '.updateuser', function() {
+                    
+                    var _this= $(this).parents('tr');
+                    
+                    var usertype1 = $(this).children('option:selected').data('usertype');
+    
+                 
+                     var currentRow = $(this).closest("tr");
+                     var usertype = t.row(currentRow).data()[2];
+                     var contactnumber = t.row(currentRow).data()[4];
+                     var emailaddress = t.row(currentRow).data()[5];
+                     var firstname = t.row(currentRow).data()[6];
+                     var lastname = t.row(currentRow).data()[7];
+                     var middlename = t.row(currentRow).data()[8];
+                     var userid = t.row(currentRow).data()[9];
+                     $('#UpdateContactNumber').val(contactnumber);
+                     $('#UpdateEmailAddress').val(emailaddress);
+                     $('#UpdateFirstname').val(firstname);
+                     $('#UpdateLastname').val(lastname);
+                     $('#UpdateMiddlename').val(middlename);
+                     $('#UpdateUserType').val(usertype);
+                     $('#userid').val(userid);
+                    console.log(usertype);
+                     
+                });
+} );
+
+    
+
+
         </script>
 
-    </body>
+
    
+    </body>
 
 </html>

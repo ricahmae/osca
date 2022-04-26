@@ -36,27 +36,10 @@ class UserAuthController extends Controller
         } else {
             //check password
             if ($request->password == $userInfo->password) {
-                if ($userInfo->userstatus == 1 and $userInfo->userrole ==  'ADMIN') {
-                    $request->session()->put('LoggedUser', $userInfo->id);
+                if ($userInfo->userstatus == 'ACTIVE' and $userInfo->usertype ==  'ADMIN') {
+                    $request->session()->put('LoggedUser', $userInfo->userid);
                     return redirect('admin/dashboard');
                 }
-                // } elseif ($userInfo->status == 1 and $userInfo->role ==  'ZCDRRMO OFFICER') {
-                //     // return back()->with('fail', 'Your account was deactivated ');
-                //     $request->session()->put('LoggedUser', $userInfo->id);
-                //     return redirect('zcdrrmo/dashboard');
-                // } elseif ($userInfo->status == 1 and $userInfo->role ==  'MEDICAL OFFICER') {
-                //     // return back()->with('fail', 'Your account was deactivated ');
-                //     $request->session()->put('LoggedUser', $userInfo->id);
-                //     return redirect('medical-officer/dashboard');
-                // } elseif ($userInfo->status == 1 and $userInfo->role ==  'CHO-OPCEN OFFICER') {
-                //     // return back()->with('fail', 'Your account was deactivated ');
-                //     $request->session()->put('LoggedUser', $userInfo->id);
-                //     return redirect('cho-opcen/dashboard');
-                // } elseif ($userInfo->status == 1 and $userInfo->role ==  'STAFF') {
-                //     // return back()->with('fail', 'Your account was deactivated ');
-                //     $request->session()->put('LoggedUser', $userInfo->id);
-                //     return redirect('staff/dashboard');
-                // }
             } else {
                 return back()->with('fail', 'Incorrect password');
             }

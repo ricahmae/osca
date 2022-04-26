@@ -1,91 +1,87 @@
-<!--offcanvas-->
-<div class="offcanvas offcanvas-start bg1 sidebar-nav border border-top-3 border-dark" tabindex="-1" id="offcanvasExample" 
-    aria-labelledby="offcanvasExampleLabel">
+{{-- sidebar --}}
 
-    <div class="offcanvas-body p-0">
-        <nav class="navbar-light">
-            <ul class="navbar-nav">
+<input type="checkbox" id="sidebar-toggle">
+<div class="sidebar">
+    <div class="sidebar-header">
+        <h3 class="brand">
+            <span>OSCA-ADMIN<span>
+         
+        </h3>
 
-                <li>
-                    <div class="text-white small fw-bold text-uppercase text-center mt-3">
-                        <h4 class="admin">admin</h4>
-                    </div>
-                </li>
-
-                <li class="my-2 ">
-                    <hr class="dropdown-divider" />
-                </li>
-
-                <li>
-                    <a class="nav-link px-3 sidebar-link text-white" href="/admin/dashboard">
-                    <img src="{{asset('assets/img/home.png')}}" width="28" height="23" padding="10px">
-                        <span class="dashboard">Dashboard</span>   
-                    </a>
-                </li>
-
-                <!-- <li class="my-1">
-                    <hr class="dropdown-divider"/>
-                </li>
-
-                <li>
-                <a class="nav-link px-3 sidebar-link text-white" href="/admin/dashboard">
-                        <span><i class="fas fa-chart-line"></i></span>
-                        <span class="profile">Profile</span>   
-                    </a>
-                </li> -->
-
-              
-
-                <li class="my-1">
-                    <hr class="dropdown-divider" />
-                </li>
-
-                <li>
-                    <a class="nav-link px-3 sidebar-link text-white" href="/admin/users">
-                        <span><i class="fas fa-users"></i></span>
-                        <span class="cash">Senior Citizens</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-link px-3 sidebar-link text-white" href="/admin/users">
-                        <span><i class="fas fa-users"></i></span>
-                        <span class="cash">Cash Gifts</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-link px-3 sidebar-link text-white" href="/admin/facilities">
-                        <span><i class="fas fa-folder-open"></i></span>
-                        <span class="social">Social Pensions</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="nav-link px-3 sidebar-link text-white" href="/admin/roles">
-                        <span><i class="fas fa-sitemap"></i></span>
-                        <span class="users">Users</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a class="nav-link px-3 sidebar-link text-white" href="/admin/hospitals">
-                        <span><i class="fas fa-hospital-alt"></i></span>
-                        <span class="export">Export</span>
-                    </a>
-                </li>
-
-                
-                <hr class="dropdown-divider" />
-                
-                <li>
-                    <a class="nav-link px-3 sidebar-link text-white" href="/logout">
-                        <span><i class="fas fa-sign-out-alt"></i></span>
-                        <span class="logout">Logout</span>
-                    </a>
-                </li>
-
-            </ul>
-        </nav>
+        <label for="sidebar-toggle"><i class="fa fa-2x fa-bars" aria-hidden="true"></i></label>
     </div>
 
-</div>
-<!--offcanvas-->
+    <div class="sidebar-menu" id="">
 
+        <ul>
+            <!--nav-item-->
+            <li class="{{'/admin/dashboard' == request()->path() ? 'active': '' }}">
+                <a href="/admin/dashboard">
+                    <span><i class="fas fa-chart-line"></i></span>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <li class="{{'/admin/patient' == request()->path() ? : '' }}">
+                <a href="/admin/applicant">
+                    <span><i class="fas fa-user"></i></span>
+                    <span>Applicants</span>
+                </a>
+            </li>
+
+            <li class="{{'/admin/archives' == request()->path() ? : '' }}">
+                <a href="/admin/loss">
+                    <span><i class="fas fa-folder-open"></i></span>
+                    <span>Loss</span>
+                </a>
+            </li>
+            <li class="{{'/admin/exports' == request()->path() ? : '' }}">
+                <a href="/admin/damaged">
+                    <span><i class="fas fa-file-download"></i></span>
+                    <span>Damaged</span>
+                </a>
+            </li>
+            <li class="{{'/admin/exports' == request()->path() ? : '' }}">
+                <a href="/admin/track">
+                    <span><i class="fas fa-file-download"></i></span>
+                    <span>Track</span>
+                </a>
+            </li>
+
+            <li class="{{'/admin/exports' == request()->path() ? : '' }}">
+                <a href="/admin/benefit">
+                    <span><i class="fas fa-file-download"></i></span>
+                    <span>Benefits</span>
+                </a>
+            </li>
+            <li class="{{'/admin/exports' == request()->path() ? : '' }}">
+                <a href="/admin/fieldoffice">
+                    <span><i class="fas fa-file-download"></i></span>
+                    <span>Field Offices</span>
+                </a>
+            </li>
+            <li class="{{'/admin/exports' == request()->path() ? : '' }}">
+                <a href="/admin/list">
+                    <span><i class="fas fa-file-download"></i></span>
+                    <span>Senior Citizen</span>
+                </a>
+            </li>
+            <li class="{{'/admin/users' == request()->path() ? : '' }}">
+                <a href="/admin/user">
+                    <span><i class="fas fa-users"></i></span>
+                    <span>Users</span>
+                </a>
+            </li>
+
+            <li class="{{'' == request()->path() ? : '' }}">
+                <a href="/logout">
+                    <span><i class="fas fa-sign-out-alt"></i></span>
+                    <span>Logout</span>
+                </a>
+            </li>
+
+        </ul>
+        <span><span>
+    </div>
+
+</div> 
